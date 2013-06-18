@@ -1,0 +1,8 @@
+# http://superuser.com/questions/53978/ubuntu-automatically-mount-external-drives-to-media-label-on-boot-without-a-u
+# /etc/udev/rules.d/89-local.rules
+# ADD rule: if we have a valid ID_FS_LABEL_ENC, and it's USB, mkdir and mount
+ENV{ID_FS_LABEL_ENC}=="?*",   ACTION=="add",      SUBSYSTEMS=="usb", \
+         RUN+="/usr/local/sbin/udev-automounter.sh %k"
+# REMOVE rule
+ENV{ID_FS_LABEL_ENC}=="?*",   ACTION=="remove",      SUBSYSTEMS=="usb", \
+         RUN+="/usr/local/sbin/udev-autounmounter.sh %k"
