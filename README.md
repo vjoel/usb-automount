@@ -1,13 +1,13 @@
 usb-automount
 =============
 
-scritps to control udev automounting
+Scripts to control udev automounting.
 
-install these files as noted in comments
+When a USB drive is attached to the system, it is mounted at `/media/auto/LABEL`, where LABEL is the volume label. This is especially useful for headless systems where there is no desktop manager to perform this function.
 
-in addition, /media should be mounted tmpfs so that the mount points get cleared at reboot
+Install these files as noted in comments.
 
-for example:
+In addition, /media should be mounted tmpfs so that the mount points get cleared at reboot. For example:
 
     $ ls -l /media
     total 24K
