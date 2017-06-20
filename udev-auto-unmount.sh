@@ -4,7 +4,7 @@
 #   DEVICE   is the actual device node at /dev/DEVICE
 # 
 # This script takes a device name, looks up the partition label and
-# type, creates /media/LABEL and mounts the partition.  Mount options
+# type, creates /media/auto/LABEL and mounts the partition.  Mount options
 # are hard-coded below.
 #
 # This file goes in /usr/local/sbin/udev-auto-unmount.sh

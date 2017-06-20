@@ -4,7 +4,7 @@
 #   DEVICE   is the actual device node at /dev/DEVICE
 # 
 # This script takes a device name, looks up the partition label and
-# type, creates /media/LABEL and mounts the partition.  Mount options
+# type, creates /media/auto/LABEL and mounts the partition.  Mount options
 # are hard-coded below.
 #
 # This file goes in /usr/local/sbin/udev-auto-mount.sh
@@ -57,10 +57,10 @@ fi
 
 
 # test mountpoint - it shouldn't exist
-if [ ! -e "/media/${ID_FS_LABEL}" ]; then
+if [ ! -e "/media/auto/${ID_FS_LABEL}" ]; then
 
    # make the mountpoint
-   mkdir "/media/${ID_FS_LABEL}"
+   mkdir "/media/auto/${ID_FS_LABEL}"
 
    # mount the device
    # 
@@ -75,15 +75,15 @@ if [ ! -e "/media/${ID_FS_LABEL}" ]; then
    # 
    case "$ID_FS_TYPE" in
 
-       vfat)  mount -t vfat -o sync,noatime,uid=1000 /dev/${DEVICE} "/media/${ID_FS_LABEL}"
+       vfat)  mount -t vfat -o sync,noatime,uid=1000 /dev/${DEVICE} "/media/auto/${ID_FS_LABEL}"
               ;;
 
               # I like the locale setting for ntfs
-       ntfs)  mount -t auto -o sync,noatime,uid=1000,locale=en_US.UTF-8 /dev/${DEVICE} "/media/${ID_FS_LABEL}"
+       ntfs)  mount -t auto -o sync,noatime,uid=1000,locale=en_US.UTF-8 /dev/${DEVICE} "/media/auto/${ID_FS_LABEL}"
               ;;
 
               # ext2/3/4 don't like uid option
-       ext*)  mount -t auto -o sync,noatime /dev/${DEVICE} "/media/${ID_FS_LABEL}"
+       ext*)  mount -t auto -o sync,noatime /dev/${DEVICE} "/media/auto/${ID_FS_LABEL}"
               ;;
    esac
 
