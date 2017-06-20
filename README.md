@@ -19,3 +19,4 @@ In addition, /media should be mounted tmpfs so that the mount points get cleared
     $ grep auto /etc/fstab
     tmpfs           /media/auto     tmpfs   mode=0755,nodev,noexec,nosuid 0 0
 
+After inserting a USB drive (or booting with the drive attached), the drive should appear under `/media/auto`.
